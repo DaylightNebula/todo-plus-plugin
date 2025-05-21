@@ -7,7 +7,7 @@ plugins {
     id("org.jetbrains.intellij.platform") version "2.3.0"
 }
 
-group = "dsh"
+group = "dsh.todoplusplugin"
 version = "1.0-SNAPSHOT"
 
 repositories {
