@@ -24,8 +24,8 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="dsh.todoplusplugin.TodoStartupActivity"/>
-        <fileEditorProvider implementation="dsh.todoplusplugin.TodoFileEditorProvider"/>
+        <postStartupActivity implementation="dsh.todoplusplugin.listeners.TodoStartupActivity"/>
+<!--        <fileEditorProvider implementation="dsh.todoplusplugin.oldeditor.TodoFileEditorProvider"/>-->
         <toolWindow id="TODOs"
                     anchor="right"
                     factoryClass="dsh.todoplusplugin.TodoToolWindowFactory"

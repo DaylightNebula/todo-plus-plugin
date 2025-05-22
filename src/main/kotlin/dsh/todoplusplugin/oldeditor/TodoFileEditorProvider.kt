@@ -1,4 +1,4 @@
-package dsh.todoplusplugin
+package dsh.todoplusplugin.oldeditor
 
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileEditor.FileEditorPolicy
@@ -9,7 +9,7 @@ import com.intellij.openapi.vfs.VirtualFile
 
 class TodoFileEditorProvider: FileEditorProvider, DumbAware {
     override fun accept(project: Project, file: VirtualFile): Boolean {
-        return file.name == "todo.json"
+        return file.name == "todo"
     }
 
     override fun createEditor(project: Project, file: VirtualFile): FileEditor {
