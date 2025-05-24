@@ -12,7 +12,7 @@ sealed class TodoAction {
 
     @Serializable
     @SerialName("create")
-    data class TodoCreate(
+    data class Create(
         val title: String
     ): TodoAction() {
         override fun render(id: UUID, map: MutableMap<UUID, TodoItem>) {
@@ -21,8 +21,18 @@ sealed class TodoAction {
     }
 
     @Serializable
+    @SerialName("set_completed")
+    data class SetCompleted(
+        val completed: Boolean
+    ): TodoAction() {
+        override fun render(id: UUID, map: MutableMap<UUID, TodoItem>) {
+            map[id]?.completed = completed
+        }
+    }
+
+    @Serializable
     @SerialName("delete")
-    class TodoDelete: TodoAction() {
+    class Delete: TodoAction() {
         override fun render(id: UUID, map: MutableMap<UUID, TodoItem>) {
             map.remove(id)
         }

@@ -8,5 +8,6 @@ import java.util.UUID
 class TodoItem(
     @Serializable(with = UUIDSerializer::class)
     val id: UUID,
-    val title: String
+    var title: String,
+    var completed: Boolean = false
 )

@@ -8,13 +8,17 @@ import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.openapi.wm.ToolWindowManager
 import com.intellij.ui.content.ContentFactory
-import kotlinx.serialization.encodeToString
 import java.awt.BorderLayout
 import java.io.File
 import javax.swing.BoxLayout
 import javax.swing.JButton
+import javax.swing.JCheckBox
 import javax.swing.JLabel
 import javax.swing.JPanel
+
+// todo save on todo file dirty without calling refresh
+// todo remove task button
+// todo add new task button
 
 object TodoToolWindowFactory: ToolWindowFactory {
 
@@ -40,8 +44,30 @@ object TodoToolWindowFactory: ToolWindowFactory {
             panel.layout = BoxLayout(panel, BoxLayout.Y_AXIS)
             panel.add(JLabel("TODOs: ")) // todo add "add item button"
             val toRender = todoFile.render()
-            println("Rendering ${toRender.size} items")
-            toRender.forEach { panel.add(JLabel(it.title)) }
+            toRender.forEach { item ->
+                // setup row panel
+                val row = JPanel()
+                row.layout = BoxLayout(row, BoxLayout.X_AXIS)
+                row.alignmentX = 0.0f
+                panel.add(row)
+
+                // add checkbox 
+                val cbox = JCheckBox()
+                cbox.addActionListener { event ->
+                    // remove last set-completed action if peek last and this item, otherwise, add a new set-completed action
+                    if (todoFile.peekLast()?.third is TodoAction.SetCompleted && todoFile.peekLast()?.second == item.id)
+                        todoFile.dropLast()
+                    else
+                        todoFile.newAction(
+                            id = item.id,
+                            action = TodoAction.SetCompleted(cbox.isSelected)
+                        )
+                }
+                row.add(cbox)
+
+                // add label
+                row.add(JLabel(item.title))
+            }
         }
 
         // otherwise, if no contents and no to do file, add a button to create one

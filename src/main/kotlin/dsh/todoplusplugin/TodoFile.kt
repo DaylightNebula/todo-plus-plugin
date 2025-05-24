@@ -55,6 +55,18 @@ class TodoFile(
         sortedActions.forEach { (_, id, action) -> action.render(id, map) }
         return map.values
     }
+
+    fun newAction(id: UUID, action: TodoAction) {
+        sortedActions.addLast(Triple(System.currentTimeMillis(), id, action))
+        dirty = true
+    }
+
+    fun dropLast() {
+        sortedActions.removeLast()
+        dirty = true
+    }
+
+    fun peekLast() = sortedActions.lastOrNull()
 }
 
 fun Iterator<Char>.nextUntil(char: Char): String {
