@@ -50,7 +50,7 @@ object TodoToolWindowFactory: ToolWindowFactory {
 
         // update source file and todo file
         sourceFile = file
-        todoFile = TodoFile.deserialize(file.readText())
+        todoFile = if (sourceFile?.exists() == true) TodoFile.deserialize(file.readText()) else null
 
         // update UI
         refreshUI()
