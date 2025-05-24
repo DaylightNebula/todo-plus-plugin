@@ -51,20 +51,20 @@ class TodoFileEditor(private val file: VirtualFile, private val project: Project
         val wrapper = JPanel()
         wrapper.layout = BoxLayout(wrapper, BoxLayout.Y_AXIS)
 
-        todoItems.groupBy { it.category }.forEach { (category, items) ->
-            wrapper.add(JLabel("<html><h3>$category</h3></html>"))
-            items.forEach { todo ->
-                val checkbox = JCheckBox(todo.title, todo.completed)
-                checkbox.addActionListener {
-                    todo.completed = checkbox.isSelected
-                    modified = true
-                    firePropertyChange(PROP_MODIFIED, false, true) // notify IDE about the modified state
-                    save()
-                }
-                checkboxes.add(checkbox)
-                wrapper.add(checkbox)
-            }
-        }
+//        todoItems.groupBy { it.category }.forEach { (category, items) ->
+//            wrapper.add(JLabel("<html><h3>$category</h3></html>"))
+//            items.forEach { todo ->
+//                val checkbox = JCheckBox(todo.title, todo.completed)
+//                checkbox.addActionListener {
+//                    todo.completed = checkbox.isSelected
+//                    modified = true
+//                    firePropertyChange(PROP_MODIFIED, false, true) // notify IDE about the modified state
+//                    save()
+//                }
+//                checkboxes.add(checkbox)
+//                wrapper.add(checkbox)
+//            }
+//        }
 
         return wrapper
     }
