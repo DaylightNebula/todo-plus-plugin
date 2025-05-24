@@ -6,7 +6,7 @@ import com.intellij.openapi.vfs.VirtualFileManager
 
 class TodoStartupActivity: StartupActivity {
     override fun runActivity(project: Project) {
-        val listener = TodoFileListener(project)
+        val listener = TodoFileListener()
         VirtualFileManager.getInstance().addVirtualFileListener(listener, project)
     }
 }

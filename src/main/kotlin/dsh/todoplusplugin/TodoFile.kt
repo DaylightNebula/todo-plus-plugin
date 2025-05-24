@@ -2,6 +2,7 @@ package dsh.todoplusplugin
 
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import java.io.File
 import java.util.LinkedList
 import java.util.UUID
 
@@ -19,7 +20,8 @@ class TodoFile(
 
             while(iterator.hasNext()) {
                 // loads a timestamp, a UUID, and a TodoAction
-                val timestamp = iterator.nextUntil('|').toLong()
+                val timestampString = iterator.nextUntil('|')
+                val timestamp = timestampString.trim().toLong()
                 val id = UUID.fromString(iterator.nextUntil('|'))
                 val action = json.decodeFromString<TodoAction>(iterator.nextUntilClose('{', '}'))
 
@@ -67,6 +69,12 @@ class TodoFile(
     }
 
     fun peekLast() = sortedActions.lastOrNull()
+
+    fun drain(file: File) {
+        if (!dirty) return
+        val content = serialize()
+        file.writeText(content)
+    }
 }
 
 fun Iterator<Char>.nextUntil(char: Char): String {

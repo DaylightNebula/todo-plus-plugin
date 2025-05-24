@@ -21,6 +21,14 @@ sealed class TodoAction {
     }
 
     @Serializable
+    @SerialName("delete")
+    class Delete: TodoAction() {
+        override fun render(id: UUID, map: MutableMap<UUID, TodoItem>) {
+            map.remove(id)
+        }
+    }
+
+    @Serializable
     @SerialName("set_completed")
     data class SetCompleted(
         val completed: Boolean
@@ -31,10 +39,12 @@ sealed class TodoAction {
     }
 
     @Serializable
-    @SerialName("delete")
-    class Delete: TodoAction() {
+    @SerialName("set_title")
+    data class SetTitle(
+        val title: String
+    ): TodoAction() {
         override fun render(id: UUID, map: MutableMap<UUID, TodoItem>) {
-            map.remove(id)
+            map[id]?.title = title
         }
     }
 }
