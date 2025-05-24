@@ -65,7 +65,7 @@ object TodoToolWindowFactory: ToolWindowFactory {
         panel.layout = BoxLayout(panel, BoxLayout.Y_AXIS)
 
         // load contents into a linked list if necessary
-        if (todoFile != null) drawFileUI(panel)
+        if (todoFile != null && sourceFile?.exists() == true) drawFileUI(panel)
         // otherwise, if no contents and no to do file, add a button to create one
         else drawNoFileUI(panel)
 
