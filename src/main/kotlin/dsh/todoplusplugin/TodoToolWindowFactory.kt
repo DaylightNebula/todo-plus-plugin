@@ -213,7 +213,11 @@ object TodoToolWindowFactory: ToolWindowFactory {
         drain()
     }
 
-    fun drain() = sourceFile?.let { ignoreCount++; todoFile?.drain(it) }
+    fun drain() = sourceFile?.let { sourceFile ->
+        ignoreCount++
+        todoFile?.drain(sourceFile)
+        VfsUtil.markDirtyAndRefresh(true, false, false, sourceFile)
+    }
 
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         ApplicationManager.getApplication().runWriteAction {

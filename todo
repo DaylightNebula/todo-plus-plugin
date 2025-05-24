@@ -2,3 +2,13 @@
 1748107770704|b47b2219-629b-4960-98a6-a723f37720af|{"type":"create","title":"Hello"}
 1748108084552|b47b2219-629b-4960-98a6-a723f37720af|{"type":"set_completed","completed":true}
 1748109914977|b47b2219-629b-4960-98a6-a723f37720af|{"type":"set_title","title":"Hello World"}
+1748110828021|b47b2219-629b-4960-98a6-a723f37720af|{"type":"delete"}
+1748110830332|f53e5095-52d9-4dc2-accf-b90508d7a23a|{"type":"delete"}
+1748110881303|9cb5defe-91c9-467d-9871-ea95381a4061|{"type":"create","title":"Add descriptions"}
+1748110903351|0ca70390-70db-4600-a578-79e06dfe1c2b|{"type":"create","title":"Subtasks"}
+1748110911544|360b5571-47e4-402d-aa90-17141d606a8a|{"type":"create","title":"Subtasks and description in task dropdown"}
+1748110992750|cd32f669-d068-4dcf-b9d7-19c6e031d225|{"type":"create","title":"Sort tasks by completed"}
+1748110999508|a532c6fc-4831-4562-bf54-026ec19860e0|{"type":"create","title":"Categories"}
+1748111004376|c1d32c66-ccd0-419c-96b1-c88d0758854c|{"type":"create","title":"Group by categories"}
+1748111033183|f0f05d52-195e-4cd5-8154-c3a9e2756edd|{"type":"create","title":"Default Category"}
+1748111062268|60f26eeb-4a58-4300-ac08-b19bddc1f908|{"type":"create","title":"Categories only in root tasks (not sub tasks)"}
